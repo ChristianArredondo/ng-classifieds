@@ -1,0 +1,17 @@
+{
+  "name": "ngclassifieds",
+  "version": "1.0.0",
+  "description": "ngClassifieds app from Udemy Tutorial",
+  "main": "index.js",
+  "scripts": {
+    "start": "live-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "christian arredondo",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "1.4.8",
+    "angular-material": "^0.11.4",
+    "mdi": "^2.2.43"
+  }
+}

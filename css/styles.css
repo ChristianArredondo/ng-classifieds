@@ -1,0 +1,7 @@
+button.md-button {
+  display: flex;
+}
+button.md-button md-icon.mdi.mdi-plus-circle.ng-scope.ng-isolate-scope.material-icons {
+  display: flex;
+  align-items: center;
+}

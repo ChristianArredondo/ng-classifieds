@@ -31,13 +31,30 @@
           });
           $scope.closeSidebar();
           $scope.classified = {};
-          $mdToast.show(
-            $mdToast.simple()
-              .content('Classified saved!')
-              .position('top, right')
-              .hideDelay(3000)
-          );
+          showToast('Classified saved!');
         }
+      }
+
+      $scope.editClassified = (classified) => {
+        $scope.editing = true;
+        $scope.openSidebar();
+        $scope.classified = classified;
+      }
+
+      $scope.saveEdit = () => {
+        $scope.editing = false;
+        $scope.classified = {};
+        $scope.closeSidebar();
+        showToast('Edit saved!');
+      }
+
+      function showToast(message) {
+        $mdToast.show(
+          $mdToast.simple()
+            .content(message)
+            .position('top, right')
+            .hideDelay(3000)
+        );
       }
 
     });

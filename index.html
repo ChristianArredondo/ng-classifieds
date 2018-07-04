@@ -98,8 +98,8 @@
         <div class="classified-admin" ng-if="showAdmin">
           <h3>Admin</h3>
           <div layout="row">
-            <md-button class="md-primary">Edit</md-button>
-            <md-button class="md-warn">Delete</md-button>
+            <md-button class="md-primary" ng-click="editClassified(classified)">Edit</md-button>
+            <md-button class="md-warn" ng-click="deleteClassified(classified)">Delete</md-button>
           </div>
         </div>
         

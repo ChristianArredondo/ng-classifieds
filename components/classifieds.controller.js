@@ -3,7 +3,7 @@
 
   angular
     .module('ngClassifieds')
-    .controller('classifiedsCtrl', ($scope, $http, classifiedsFactory, $mdSidenav, $mdToast) => {
+    .controller('classifiedsCtrl', ($scope, $http, classifiedsFactory, $mdSidenav, $mdToast, $mdDialog) => {
 
       const contact = {
         name: 'Christian',
@@ -46,6 +46,21 @@
         $scope.classified = {};
         $scope.closeSidebar();
         showToast('Edit saved!');
+      }
+
+      $scope.deleteClassified = (event, classified) => {
+        const confirm = $mdDialog.confirm()
+          .title(`Are you sure you want to delete ${classified.title}?`)
+          .ok('Yes')
+          .cancel('No')
+          .targetEvent(event)
+        $mdDialog.show(confirm).then(
+          () => {
+            const index = $scope.classifieds.indexOf(classified);
+            $scope.classifieds.splice(index, 1);
+          },
+          () => {}
+        );
       }
 
       function showToast(message) {

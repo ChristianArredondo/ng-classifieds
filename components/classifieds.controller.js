@@ -10,9 +10,10 @@
         phone: '(888) 888-8888',
         email: 'rofl@test.com'
       };
-
+      
       classifiedsFactory.getClassifieds().then(classifieds => {
         $scope.classifieds = classifieds.data;
+        $scope.categories = getCategories($scope.classifieds);
       });
 
       $scope.openSidebar = () => {
@@ -70,6 +71,16 @@
             .position('top, right')
             .hideDelay(3000)
         );
+      }
+
+      function getCategories(classifieds) {
+        const categories = classifieds.reduce((memo, val) => {
+          if (memo.indexOf(val) < 0) {
+            memo.push(...val.categories);
+          }
+          return memo;
+        }, []);
+        return _.uniq(categories);
       }
 
     });

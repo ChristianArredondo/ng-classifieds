@@ -1,4 +1,9 @@
-<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
+<md-sidenav
+  class="md-sidenav-left
+  md-whiteframe-z2"
+  md-component-id="left"
+  md-is-open="vm.sidenavOpen"
+  >
   <md-toolbar class="md-primary">
     <h1 class="md-toolbar-tools">Add a Classified</h1>
   </md-toolbar>
@@ -32,7 +37,7 @@
       <md-button ng-if="editing" ng-click="vm.saveEdit()" class="md-primary">
         Save Edit
       </md-button>
-      <md-button ng-click="vm.closeSidebar()" class="md-warn">
+      <md-button ng-click="vm.sidenavOpen = false" class="md-warn">
         Cancel
       </md-button>
     </form>

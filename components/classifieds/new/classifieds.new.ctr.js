@@ -4,6 +4,7 @@
     .module('ngClassifieds')
     .controller('newClassifiedsCtrl', function($scope, $state, $mdSidenav, $timeout, $mdDialog, classifiedsFactory) {
       const vm = this;
+      vm.saveClassified = saveClassified;
 
       $timeout(function() {
         $mdSidenav('left').open();
@@ -16,5 +17,20 @@
           })
         }
       });
-    })
+
+      function saveClassified(classified) {
+        if (classified) {
+          $scope.$emit('newClassified', {
+            ...classified,
+            contact: {
+              name: 'Christian',
+              phone: '(888) 888-8888',
+              email: 'rofl@test.com'
+            }
+          });
+          vm.sidenavOpen = false;
+        }
+      }
+
+    });
 })();

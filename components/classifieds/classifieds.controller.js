@@ -3,11 +3,11 @@
 
   angular
     .module('ngClassifieds')
-    .controller('classifiedsCtrl', function($state, classifiedsFactory, $mdSidenav, $mdToast, $mdDialog) {
+    .controller('classifiedsCtrl', function($scope, $state, classifiedsFactory, $mdSidenav, $mdToast, $mdDialog) {
 
       const vm = this;
       vm.categories;
-      vm.classifieds;
+      vm.classifieds; 
       vm.closeSidebar = closeSidebar;
       vm.deleteClassified = deleteClassified;
       vm.editClassified = editClassified;
@@ -15,12 +15,14 @@
       vm.openSidebar = openSidebar;
       vm.saveClassified = saveClassified;
       vm.saveEdit = saveEdit;
-      
-      const contact = {
-        name: 'Christian',
-        phone: '(888) 888-8888',
-        email: 'rofl@test.com'
-      };
+
+      $scope.$on('newClassified', function(event, classified) {
+        vm.classifieds.push({
+          ...classified,
+          id: vm.classifieds.length + 1
+        });
+        showToast('Classified added!')
+      })
       
       classifiedsFactory.getClassifieds().then(classifieds => {
         vm.classifieds = classifieds.data;

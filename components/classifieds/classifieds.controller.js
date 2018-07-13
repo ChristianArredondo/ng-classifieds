@@ -22,7 +22,11 @@
           id: vm.classifieds.length + 1
         });
         showToast('Classified added!')
-      })
+      });
+
+      $scope.$on('editSaved', function(event, message) {
+        showToast(message);
+      });
       
       classifiedsFactory.getClassifieds().then(classifieds => {
         vm.classifieds = classifieds.data;
@@ -50,9 +54,10 @@
       }
 
       function editClassified(classified) {
-        vm.editing = true;
-        openSidebar();
-        vm.classified = classified;
+        $state.go('classifieds.edit', {
+          classified,
+          id: classified.id
+        })
       }
 
       function saveEdit() {
